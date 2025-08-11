@@ -1,5 +1,4 @@
 //Binary Search
-
 #include <iostream>
 using namespace std;
 
@@ -17,7 +16,6 @@ void input()
         cin >> arr[h];
     }
 }
-
 void display()
 {
     for (int i = 0; i < s; i++)
@@ -26,7 +24,6 @@ void display()
     }
     cout << endl;
 }
-
 void b_sort() // Optimized Bubble Sort
 {
     for (int i = 0; i < s - 1; i++)
