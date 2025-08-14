@@ -13,12 +13,12 @@ int sparse[6][6] = {
 
 void transposeArray(int s, int arr[][3])
 {
-    int trans[3][100]; // 3 rows, s columns (max 100 non-zeros for safety)
-    for (int i = 0; i < 3; i++) // 3 new rows
+    int trans[3][100]; 
+    for (int i = 0; i < 3; i++) 
     {
-        for (int j = 0; j < s; j++) // s new columns
+        for (int j = 0; j < s; j++) 
         {
-            trans[i][j] = arr[j][i]; // swap indices
+            trans[i][j] = arr[j][i];
         }
     }
 
