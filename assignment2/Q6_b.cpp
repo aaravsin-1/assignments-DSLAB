@@ -94,15 +94,12 @@ int main()
     int trip1[36][3], trip2[36][3];
     int size1 = convertToTriplet(sparse1, trip1);
     int size2 = convertToTriplet(sparse2, trip2);
-
     int result[72][3];
     int resultSize = addTriplets(trip1, size1, trip2, size2, result);
-
     cout << "Resultant Triplet Array after Addition:\n";
     for (int i = 0; i < resultSize; i++)
     {
         cout << result[i][0] << " " << result[i][1] << " " << result[i][2] << endl;
     }
-
     return 0;
 }
