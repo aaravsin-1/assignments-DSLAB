@@ -63,9 +63,7 @@ int main()
     cout << "\nTransposed triplet (sorted):" << endl;
     for (int i = 0; i < size; i++)
     {
-        cout << transpose_triplet[i][0] << " "
-             << transpose_triplet[i][1] << " "
-             << transpose_triplet[i][2] << endl;
+        cout << transpose_triplet[i][0] << " "<< transpose_triplet[i][1] << " "<< transpose_triplet[i][2] << endl;
     }
 
     return 0;

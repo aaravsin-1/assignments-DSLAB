@@ -54,7 +54,7 @@ int multiplyTriplets(int trip1[][3], int size1, int trip2[][3], int size2, int r
             {
 
                 bool found = false;
-                for (int r = 0; r < k; r++)
+                for (int r = 0; r < k; r++)//check if already exists
                 {
                     if (result[r][0] == rowA && result[r][1] == colB)
                     {
