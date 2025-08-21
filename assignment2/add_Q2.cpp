@@ -7,25 +7,41 @@ parts is a substring of both remaining parts
 
 //basically check for duplicate characters if exist then yes string can be split
 #include <iostream>
+#include <string>
+
 using namespace std;
 
-int main()
-{
-    string s;
-    cout<<"Enter a string:";
-    cin>>s;
+bool isSubstring(string str1, string str2) {
+    return str2.find(str1) != string::npos;
+}
+
+bool checkPossible(string s) {
     int n = s.length();
-    for(int i = 0;i<n;i++)
-    {
-        for(int j = 0;j<i;j++)
-        {
-            if(s[i] == s[j])
-            {
-                cout<<"possible to split"<<endl;
-                return 0;
-            }
+    for (int i = 1; i < n - 1; ++i) {
+        for (int j = i + 1; j < n; ++j) {
+            string s1 = s.substr(0, i);
+            string s2 = s.substr(i, j - i);
+            string s3 = s.substr(j);
+
+            if (isSubstring(s1, s2) && isSubstring(s1, s3)) return true;
+            if (isSubstring(s2, s1) && isSubstring(s2, s3)) return true;
+            if (isSubstring(s3, s1) && isSubstring(s3, s2)) return true;
         }
     }
-    cout<<"impossible to split"<<endl;
+    return false;
+}
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        string s;
+        cin >> s;
+        if (checkPossible(s)) {
+            cout << "YES" << endl;
+        } else {
+            cout << "NO" << endl;
+        }
+    }
     return 0;
 }
