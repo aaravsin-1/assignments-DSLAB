@@ -16,7 +16,7 @@ int precedence(char op) {
 
 void infixToPostfix(const string &s) {
     int n = s.length();
-    char stack[n];  // stack implemented with array
+    char stack[n];  
     int top = -1;
     string post = "";
 
@@ -24,7 +24,7 @@ void infixToPostfix(const string &s) {
         char c = s[i];
 
         if (c == ' ') {
-            // skip spaces
+            
             continue;
         }
         else if (isOperand(c)) {
@@ -34,19 +34,19 @@ void infixToPostfix(const string &s) {
             stack[++top] = c;
         }
         else if (c == ')') {
-            // pop until '('
+            
             while (top >= 0 && stack[top] != '(') {
                 post += stack[top--];
             }
             if (top >= 0 && stack[top] == '(')
-                top--;  // pop '('
+                top--; 
             else {
                 cout << "Error: Mismatched parentheses\n";
                 return;
             }
         }
         else {
-            // operator
+            
             while (top >= 0 && precedence(stack[top]) >= precedence(c) && stack[top] != '(') {
                 post += stack[top--];
             }
@@ -54,7 +54,7 @@ void infixToPostfix(const string &s) {
         }
     }
 
-    // pop remaining operators
+    
     while (top >= 0) {
         if (stack[top] == '(') {
             cout << "Error: Mismatched parentheses\n";
