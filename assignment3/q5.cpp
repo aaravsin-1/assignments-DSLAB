@@ -81,7 +81,6 @@ int main() {
     char postfixExp[MAX];
     cout << "Enter postfix expression (space separated): ";
     cin.getline(postfixExp, MAX);
-
     int result = evaluatePostfix(postfixExp);
     cout << "Result: " << result << endl;
 
