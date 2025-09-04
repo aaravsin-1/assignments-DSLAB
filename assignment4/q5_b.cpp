@@ -1,7 +1,6 @@
 #include <iostream>
 using namespace std;
 
-
 class CircularQueue {
 public:
     int front, rear, size;
