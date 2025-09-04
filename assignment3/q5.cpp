@@ -1,3 +1,10 @@
+/*
+  ! better comments red
+  TODO highlights orange
+  * Highlights
+  ? Blue color
+
+*/
 #include <iostream>
 using namespace std;
 
@@ -7,7 +14,6 @@ using namespace std;
 struct Stack {
     int arr[MAX];
     int top;
-    
     Stack() { top = -1; }
 
     void push(int val) {
@@ -25,16 +31,14 @@ struct Stack {
         }
         return arr[top--];
     }
-
+    
     bool isEmpty() {
         return top == -1;
     }
 };
-
 bool isOperator(char ch) {
     return ch == '+' || ch == '-' || ch == '*' || ch == '/';
 }
-
 int evaluatePostfix(char exp[]) {
     Stack s;
     int i = 0;
