@@ -1,7 +1,6 @@
 /*
-    Write a program interleave the first half of the queue with second half.
-    Sample I/P: 4 7 11 20 5 9 Sample O/P: 4 20 7 5 11 9
-
+    Write a program to find first non-repeating character in a string using Queue. Sample I/P: a a
+    b c Sample O/P: a -1 b b
 */
 #include <iostream>
 using namespace std;
@@ -84,38 +83,28 @@ void CircularQueue::display() {
     }
     cout << endl;
 }
-int main() 
-{
+
+int main() {
     CircularQueue qobj;
-    CircularQueue temp;
-    
-    int input[] = {4,7,11,20,5,9};
-    int s= 6;
-    qobj.size = s;
-    temp.size = s;
+    char arr[] = {'a', 'a', 'b', 'c'};
+    int s = 4;
+    qobj.size = 100; 
 
-    //configure
-    for(int i = 0;i<s;i++)//putting elements in the queue
-    {
-        qobj.enqueue(input[i]);
-    }
-    int half = s/2;
-    for(int i  = 0;i<half;i++)
-    { 
-        temp.enqueue(qobj.dequeue());
-    }
-    
-    // ? repeat half times
-    for(int i = 0;i<half;i++)
-    {
-        // ! dequeue from temp and enqueue onto q
-        int t = temp.dequeue();
-        qobj.enqueue(t);
+    int freq[1000] = {0}; // frequency tracker
 
-        // ! dequeue from self and enqueue onto q
-        t = qobj.dequeue();
-        qobj.enqueue(t);
-    }
-    qobj.display();
+    for (int i = 0; i < s; i++) {
+        int x = arr[i];
+        freq[x]++;
 
+        qobj.enqueue(x);
+
+        // remove elements that repeat
+        while (!qobj.isEmpty() && freq[qobj.peek()] > 1) {
+            qobj.dequeue();
+        }
+
+        if (qobj.isEmpty()) cout << -1 << " ";
+        else cout << (char)qobj.peek() << " ";
+    }
+    return 0;
 }
