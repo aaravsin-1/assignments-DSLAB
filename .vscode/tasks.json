@@ -3,27 +3,40 @@
     "tasks": [
         {
             "type": "cppbuild",
-            "label": "C/C++: g++.exe build active file",
-            "command": "C:/msys64/ucrt64/bin/g++.exe",
+            "label": "C/C++: g++ build",
+            "command": "C:\\msys64\\ucrt64\\bin\\g++.exe",
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
+                "-std=c++20",
                 "${file}",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}.exe"
+                "${fileDirname}\\a.exe"
             ],
             "options": {
-                "cwd": "${fileDirname}",
-                "shell": {
-                    "executable": "C:/Windows/System32/cmd.exe"
-                }
+                "cwd": "${fileDirname}"
             },
             "problemMatcher": ["$gcc"],
-            "group": {
-                "kind": "build",
-                "isDefault": true
+            "group": "build",
+            "detail": "compiler: C:\\msys64\\ucrt64\\bin\\g++.exe"
+        },
+        {
+            "label": "Run a.exe",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-NoExit",
+                "-Command",
+                ".\\a.exe"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
             },
-            "detail": "compiler: C:/msys64/ucrt64/bin/g++.exe"
+            "dependsOn": "C/C++: g++ build",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
         }
     ]
 }

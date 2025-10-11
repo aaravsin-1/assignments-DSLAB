@@ -66,5 +66,6 @@ int main() {
     int ele = 0;
     cin>>ele;
     search_list(head,ele);
+    system("pause");
     return 0;
 }
