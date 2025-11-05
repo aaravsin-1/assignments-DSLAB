@@ -22,52 +22,49 @@ public:
     {
         root = NULL;
     }
-    bool r_search(Node *t, int val)
+    int Min(Node *t)
     {
         if (t == NULL)
-            return false;
-
-        if (t->data == val)
-            return true;
-
-        if (val < t->data)
-            return r_search(t->lchild, val);
-        else
-            return r_search(t->rchild, val);
-    }
-    void nr_search(int val)
-    {
-        int level = 0;
-        string position = "";
-        if (root == NULL)
         {
-            cout << "EMPTY TREE" << endl;
-            return;
+            cout << "empty tree" << endl;
+            return -1;
         }
+        if (t->lchild != NULL)
+        {
+            return Min(t->lchild);
+        }
+        else
+            return t->data;
+    }
+    void successor(int val)
+    {
+        Node *y = NULL;
         Node *t = root;
         while (t != NULL)
         {
             if (t->data < val)
             {
-                level++;
-                position += "right,";
                 t = t->rchild;
             }
             else if (t->data > val)
             {
-                level++;
-                position += "left,";
+                y = t;
                 t = t->lchild;
             }
             else
             {
-                cout << "element found at:" << endl;
-                cout << "Level = " << level << " And position =" << position << endl;
-                return;
+                if (t->rchild != NULL)
+                {
+                    cout << "successor is:" << Min(t->rchild) << endl;
+                    return;
+                }
+                break;//successor is y
             }
         }
-        cout << "Element not found" << endl;
-        return;
+        if (y != NULL)
+            cout << "Successor is: " << y->data << endl;
+        else
+            cout << "No successor" << endl;
     }
     void insert(int val)
     {
@@ -120,9 +117,5 @@ int main()
     {
         BST.insert(ele[i]);
     }
-    BST.nr_search(31);
-    if (BST.r_search(BST.root, 34))
-        cout << "VALUE FOUND" << endl;
-    else
-        cout << "VALUE NOT FOUND" << endl;
+    BST.successor(100);
 }

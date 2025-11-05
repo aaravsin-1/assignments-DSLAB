@@ -22,52 +22,19 @@ public:
     {
         root = NULL;
     }
-    bool r_search(Node *t, int val)
+    int Min(Node *t)
     {
-        if (t == NULL)
-            return false;
-
-        if (t->data == val)
-            return true;
-
-        if (val < t->data)
-            return r_search(t->lchild, val);
+        if(t==NULL)
+        {
+            cout<<"empty tree"<<endl;
+            return -1;
+        }
+        if (t->lchild != NULL)
+        {
+            return Min(t->lchild);
+        }
         else
-            return r_search(t->rchild, val);
-    }
-    void nr_search(int val)
-    {
-        int level = 0;
-        string position = "";
-        if (root == NULL)
-        {
-            cout << "EMPTY TREE" << endl;
-            return;
-        }
-        Node *t = root;
-        while (t != NULL)
-        {
-            if (t->data < val)
-            {
-                level++;
-                position += "right,";
-                t = t->rchild;
-            }
-            else if (t->data > val)
-            {
-                level++;
-                position += "left,";
-                t = t->lchild;
-            }
-            else
-            {
-                cout << "element found at:" << endl;
-                cout << "Level = " << level << " And position =" << position << endl;
-                return;
-            }
-        }
-        cout << "Element not found" << endl;
-        return;
+            return t->data;
     }
     void insert(int val)
     {
@@ -120,9 +87,6 @@ int main()
     {
         BST.insert(ele[i]);
     }
-    BST.nr_search(31);
-    if (BST.r_search(BST.root, 34))
-        cout << "VALUE FOUND" << endl;
-    else
-        cout << "VALUE NOT FOUND" << endl;
+    int x = BST.Min(BST.root);
+    cout << x << endl;
 }
