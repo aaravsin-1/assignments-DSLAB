@@ -31,3 +31,23 @@ int main()
     Tree t;
     cout << t.depth(r);
 }
+/*
+Pseudo Code
+Class Node:
+    val, left, right
+
+Class Tree:
+    Function depth(node):
+        If node is NULL:
+            return 0
+        leftDepth = depth(node.left)
+        rightDepth = depth(node.right)
+        return 1 + max(leftDepth, rightDepth)
+
+Main:
+    build a binary tree
+    print Tree.depth(root)
+
+
+
+*/

@@ -33,3 +33,21 @@ int main()
     Tree t;
     cout << t.sumLeft(root);
 }
+
+/*
+Pesudo Code
+Class Node:
+    val, left, right
+
+Class Tree:
+    Function sumLeft(node, isLeft = false):
+        If node is NULL:
+            return 0
+        If node.left is NULL and node.right is NULL and isLeft is true:
+            return node.val
+        return sumLeft(node.left, true) + sumLeft(node.right, false)
+
+Main:
+    create nodes and link as binary tree
+    print Tree.sumLeft(root)
+*/

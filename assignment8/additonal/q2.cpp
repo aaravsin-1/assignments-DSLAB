@@ -44,3 +44,34 @@ int main()
     auto v = b.build(1, 3);
     cout << v.size();
 }
+/*
+Pseudo Code
+Class Node:
+    val, left, right
+
+Class BST:
+    Function build(l, r):
+        If l > r:
+            return [NULL]
+        result = empty list
+        For i = l to r:
+            leftTrees = build(l, i - 1)
+            rightTrees = build(i + 1, r)
+            For each L in leftTrees:
+                For each R in rightTrees:
+                    root = new Node(i)
+                    root.left = L
+                    root.right = R
+                    add root to result
+        return result
+
+Main:
+    read n
+    trees = BST.build(1, n)
+    print number of trees
+
+
+
+
+
+*/

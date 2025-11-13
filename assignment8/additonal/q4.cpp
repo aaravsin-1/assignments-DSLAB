@@ -48,3 +48,30 @@ int main()
     Tree t;
     t.rightView(r);
 }
+/*
+Pseudo Code
+Class Node:
+    val, left, right
+
+Class Tree:
+    Function rightView(root):
+        If root is NULL:
+            return
+        queue = new empty queue
+        enqueue(root)
+        While queue not empty:
+            size = number of elements in queue
+            For i = 0 to size-1:
+                current = dequeue
+                If current.left exists:
+                    enqueue(current.left)
+                If current.right exists:
+                    enqueue(current.right)
+                If i == size - 1:
+                    print current.val
+
+Main:
+    build tree
+    Tree.rightView(root)
+
+*/

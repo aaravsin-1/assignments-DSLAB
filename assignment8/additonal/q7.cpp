@@ -94,3 +94,50 @@ int main()
         h = h->right;
     }
 }
+/*
+Pseudo Code
+Class Node:
+    val, left, right
+
+Class BST:
+    Function inorder(root, headRef, prevRef):
+        If root is NULL:
+            return
+        inorder(root.left, headRef, prevRef)
+        If headRef is NULL:
+            headRef = root
+        Else:
+            prevRef.right = root
+            root.left = prevRef
+        prevRef = root
+        inorder(root.right, headRef, prevRef)
+
+    Function merge(a, b):
+        head1, prev1, head2, prev2 = NULL
+        inorder(a, head1, prev1)
+        prev1.right = NULL
+        inorder(b, head2, prev2)
+        prev2.right = NULL
+        head = tail = NULL
+        While head1 and head2 exist:
+            If head1.val < head2.val:
+                pick = head1
+                head1 = head1.right
+            Else:
+                pick = head2
+                head2 = head2.right
+            If head is NULL:
+                head = pick
+            Else:
+                tail.right = pick
+                pick.left = tail
+            tail = pick
+        Append remaining nodes of head1 or head2
+        return head
+
+Main:
+    build two BSTs
+    result = BST.merge(root1, root2)
+    traverse result printing values
+
+*/

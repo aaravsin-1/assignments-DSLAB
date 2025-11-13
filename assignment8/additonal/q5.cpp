@@ -47,3 +47,39 @@ int main()
     Node *r = t.build(pre, in, 0, 4, idx);
     t.inorder(r);
 }
+/*
+Pseudo Code
+Class Node:
+    val, left, right
+
+Class Tree:
+    Function find(in[], start, end, value):
+        For i from start to end:
+            If in[i] == value:
+                return i
+        return -1
+
+    Function build(pre[], in[], start, end, indexRef):
+        If start > end:
+            return NULL
+        root = new Node(pre[indexRef])
+        indexRef = indexRef + 1
+        pos = find(in, start, end, root.val)
+        root.left = build(pre, in, start, pos - 1, indexRef)
+        root.right = build(pre, in, pos + 1, end, indexRef)
+        return root
+
+    Function inorder(node):
+        If node is NULL:
+            return
+        inorder(node.left)
+        print node.val
+        inorder(node.right)
+
+Main:
+    define preorder and inorder arrays
+    index = 0
+    root = Tree.build(pre, in, 0, n-1, index)
+    Tree.inorder(root)
+
+*/
