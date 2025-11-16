@@ -122,5 +122,6 @@ int main()
         BST.insert(ele[i]);
 
     // Example: delete a node
+    cout<<"😇"<<endl;
     BST.del(7);
 }
