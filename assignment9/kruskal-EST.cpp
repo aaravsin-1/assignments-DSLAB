@@ -88,21 +88,20 @@ int main() {
 
     Graph g(V, E);
 
-    // These are the exact edges from the PDF example
-    g.edge[0]  = {0, 7, 1};   // g-h
-    g.edge[1]  = {5, 6, 2};   // f-g
-    g.edge[2]  = {2, 8, 2};   // c-i
-    g.edge[3]  = {0, 1, 4};   // a-b
-    g.edge[4]  = {2, 5, 4};   // c-f
-    g.edge[5]  = {6, 8, 6};   // g-i
-    g.edge[6]  = {2, 3, 7};   // c-d
-    g.edge[7]  = {7, 8, 7};   // h-i
-    g.edge[8]  = {0, 7, 8};   // a-h
-    g.edge[9]  = {1, 2, 8};   // b-c
-    g.edge[10] = {3, 4, 9};   // d-e
-    g.edge[11] = {4, 5, 10};  // e-f
-    g.edge[12] = {1, 7, 11};  // b-h
-    g.edge[13] = {3, 5, 14};  // d-f
+    g.edge[0]  = {0, 7, 1};   
+    g.edge[1]  = {5, 6, 2};   
+    g.edge[2]  = {2, 8, 2};   
+    g.edge[3]  = {0, 1, 4};   
+    g.edge[4]  = {2, 5, 4};  
+    g.edge[5]  = {6, 8, 6};  
+    g.edge[6]  = {2, 3, 7};  
+    g.edge[7]  = {7, 8, 7};   
+    g.edge[8]  = {0, 7, 8}; 
+    g.edge[9]  = {1, 2, 8};   
+    g.edge[10] = {3, 4, 9};  
+    g.edge[11] = {4, 5, 10};  
+    g.edge[12] = {1, 7, 11};  
+    g.edge[13] = {3, 5, 14};  
 
     g.KruskalMST();
     cout<<endl;
