@@ -9,6 +9,7 @@ const int INF = 1e9;
 
 /*
 PSEUDO-CODE:
+Shortest Path in Grid (Dijkstra) This treats the 2D grid as a graph where moving to a cell adds its value to the total cost.
 1. Read grid dimensions M, N and the grid costs.
 2. Create a `dist` 2D array initialized to Infinity, except `dist[0][0] = grid[0][0]`.
 3. Create a Min-Priority Queue `pq` storing tuples `{cost, row, col}`.

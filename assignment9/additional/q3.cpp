@@ -9,6 +9,7 @@ const int INF = 1e9;
 
 /*
 PSEUDO-CODE:
+Network Delay Time This uses Dijkstra on a directed graph to find the maximum time required to reach all nodes.
 1. Read grid dimensions M, N and the grid costs.
 2. Create a `dist` 2D array initialized to Infinity, except `dist[0][0] = grid[0][0]`.
 3. Create a Min-Priority Queue `pq` storing tuples `{cost, row, col}`.

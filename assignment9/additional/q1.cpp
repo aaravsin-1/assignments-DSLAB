@@ -6,6 +6,7 @@ using namespace std;
 
 /*
 PSEUDO-CODE:
+Graph Traversal Count (Connected Components) This uses BFS to count how many disconnected parts exist in the graph.
 1. Initialize `visited` array of size V to false.
 2. Initialize `components` counter to 0.
 3. Iterate through every node `i` from 0 to V-1:
