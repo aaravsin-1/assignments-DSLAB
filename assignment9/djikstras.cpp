@@ -1,66 +1,63 @@
 #include <iostream>
-#include <vector>
-#include <queue>
-
 using namespace std;
-const int INF = 1e9; 
-typedef pair<int, int> pii;
 
-void dijkstra(int startNode, int V, vector<vector<pii>>& adj) {
-    vector<int> dist(V, INF);
-    
-    
-    priority_queue<pii, vector<pii>, greater<pii>> pq;
+#define INF 999999
+#define MAX 100   // Maximum number of vertices allowed
 
-    
-    dist[startNode] = 0;
-    pq.push({0, startNode});
+void dijkstra(int G[MAX][MAX], int V, int src)
+{
+    int dist[MAX];      // shortest distances
+    int visited[MAX];   // visited array
+    int parent[MAX];    // predecessor array
 
-    while (!pq.empty()) {
-        int d = pq.top().first;
-        int u = pq.top().second;
-        pq.pop();
+    // --- Initialize ---
+    for (int i = 0; i < V; i++)
+    {
+        dist[i] = INF;
+        visited[i] = 0;
+        parent[i] = -1;
+    }
+    dist[src] = 0;
 
-        
-        if (d > dist[u]) continue;
+    // --- Dijkstra main loop ---
+    for (int count = 0; count < V - 1; count++)
+    {
+        // Step 1: pick the UNVISITED vertex with the smallest dist[]
+        int u = -1;
+        int minDist = INF;
 
-        
-        for (auto neighbor : adj[u]) {
-            int v = neighbor.first;
-            int weight = neighbor.second;
+        for (int i = 0; i < V; i++)
+        {
+            if (!visited[i] && dist[i] < minDist)
+            {
+                minDist = dist[i];
+                u = i;
+            }
+        }
 
-            
-            if (dist[u] + weight < dist[v]) {
-                dist[v] = dist[u] + weight;
-                pq.push({dist[v], v});
+        visited[u] = 1; // Mark as processed
+
+        // Step 2: Relax all neighbors v of u
+        for (int v = 0; v < V; v++)
+        {
+            if (!visited[v] && G[u][v] != 0 && dist[u] + G[u][v] < dist[v])
+            {
+                dist[v] = dist[u] + G[u][v];
+                parent[v] = u;
             }
         }
     }
 
-    
-    cout << "Shortest distances from Node " << startNode << ":" << endl;
-    for (int i = 0; i < V; i++) {
-        cout << "Node " << i << ": " << (dist[i] == INF ? -1 : dist[i]) << endl;
+    // --- Print results ---
+    cout << "\nShortest distances from source " << src << ":\n";
+    for (int i = 0; i < V; i++)
+    {
+        cout << "To " << i << " = " << dist[i] << endl;
     }
-}
 
-int main() {
-    int V = 5;
-    vector<vector<pii>> adj(V);
-
-    auto addEdge = [&](int u, int v, int w) {
-        adj[u].push_back({v, w});
-        adj[v].push_back({u, w});
-    };
-
-    addEdge(0, 1, 4);
-    addEdge(0, 2, 1);
-    addEdge(2, 1, 2);
-    addEdge(1, 3, 1);
-    addEdge(2, 3, 5);
-    addEdge(3, 4, 3);
-
-    dijkstra(0, V, adj);
-
-    return 0;
+    cout << "\nShortest Paths (parent array):\n";
+    for (int i = 0; i < V; i++)
+    {
+        cout << "Parent of " << i << " = " << parent[i] << endl;
+    }
 }

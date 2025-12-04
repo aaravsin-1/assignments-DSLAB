@@ -1,9 +1,8 @@
 #include <iostream>
-#include <array>
 #include "pretty_tree_printer.hpp"
 using namespace std;
 
-void max_heapify(array<int,11> &heap, int i, int n)
+void max_heapify(int *heap, int i, int n)
 {
     int left = 2 * i;
     int right = 2 * i + 1;
@@ -22,27 +21,36 @@ void max_heapify(array<int,11> &heap, int i, int n)
     }
 }
 
-void build_max_heap(array<int,11> &heap)
+void build_max_heap(int *heap, int n)
 {
-    int n = 10;  // heap elements are from index 1..10
-
-    for (int i = n/2; i >= 1; i--)
-    {
+    // heap is 1-indexed, elements at 1..n
+    for (int i = n / 2; i >= 1; i--)
         max_heapify(heap, i, n);
-    }
 }
 
 int main()
 {
-    array<int,11> arr = {0,4,1,3,2,16,9,10,14,8,7};
+    // Allocate heap array (11 elements: index 0 unused)
+    int *heap = new int[11];
 
-    build_max_heap(arr);
+    // Store values (index 0 = unused)
+    int temp[11] = {0, 4, 1, 3, 2, 16, 9, 10, 14, 8, 7};
+    for (int i = 0; i < 11; i++)
+        heap[i] = temp[i];
 
-    for (int i = 1; i <= 10; i++)
-        cout << arr[i] << " ";
+    int n = 10;   // number of heap elements
+
+    build_max_heap(heap, n);
+
+    // Print the heap array
+    for (int i = 1; i <= n; i++)
+        cout << heap[i] << " ";
     cout << endl;
 
-    print_pretty_heap(arr, 10);
-    cout<<endl;
+    print_pretty_heap(heap, n);  // note: must modify pretty printer if needed
+
+    delete[] heap;  // free memory
+    cout << endl;
+
     return 0;
 }
